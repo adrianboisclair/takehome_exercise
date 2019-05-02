@@ -8,7 +8,6 @@ class SimpleSlider extends React.Component {
   }
 
   renderChildren() {
-    console.log(this.props.children)
     return this.props.children.map(child =>
       <Card>
         <img src={child.replace(/^http:\/\//i, 'https://')} key={Math.random()}/>

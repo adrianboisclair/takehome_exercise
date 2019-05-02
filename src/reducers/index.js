@@ -8,14 +8,12 @@ export default (state = {result: []}, action) => {
   switch (action.type) {
 
     case SET_SEARCH_TERM:
-      console.log({ action });
       return {
         ...state,
         searchTerm: action.searchTerm,
       };
 
     case SEARCH_GIPHY_BY_TERM:
-      console.log(SEARCH_GIPHY_BY_TERM);
       return {
         ...state,
         result: action.payload.data,
