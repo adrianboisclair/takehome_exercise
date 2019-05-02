@@ -1,7 +1,12 @@
 import axios from "axios";
 import {GIPHY_API_ENDPOINT} from '../constants';
-import {SEARCH_GIPHY_BY_TERM} from "../actionTypes";
+import {SEARCH_GIPHY_BY_TERM, SET_SEARCH_TERM} from "../actionTypes";
 
+
+export const setSearchTerm = searchTerm => ({
+  type: SET_SEARCH_TERM,
+  searchTerm,
+});
 const fetchImages = (searchTerm) => {
   const url = `${GIPHY_API_ENDPOINT}&q=${searchTerm}`;
 

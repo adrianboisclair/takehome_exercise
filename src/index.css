@@ -19,3 +19,8 @@ code {
   justify-content: center;
   padding: 10px;
 }
+
+
+.slider__container {
+  padding: 20px;
+}

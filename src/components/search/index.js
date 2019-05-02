@@ -6,7 +6,8 @@ class Search extends React.Component {
   render() {
     const {
       handleSearch,
-      searchTerm ,
+      searchTerm,
+      setSearchTerm,
     } = this.props;
 
     return (
@@ -18,6 +19,7 @@ class Search extends React.Component {
           label="Search for an Image"
           defaultValue=""
           margin="normal"
+          onChange={e => setSearchTerm(e.target.value)}
         />
         <Button
           fullWidth

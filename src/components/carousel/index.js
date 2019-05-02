@@ -5,6 +5,16 @@ import Card from '@material-ui/core/Card';
 class SimpleSlider extends React.Component {
   constructor(props) {
     super(props);
+    this.next = this.next.bind(this);
+    this.previous = this.previous.bind(this);
+  }
+
+  next() {
+    this.slider.slickNext();
+  }
+
+  previous() {
+    this.slider.slickPrev();
   }
 
   renderImages() {
@@ -15,19 +25,35 @@ class SimpleSlider extends React.Component {
     );
   }
 
+  renderNextPrevControls() {
+    return (
+      <div style={{ textAlign: "center" }}>
+        <button className="button" onClick={this.previous}>
+          Previous
+        </button>
+        <button className="button" onClick={this.next}>
+          Next
+        </button>
+      </div>
+    );
+  }
+
   render() {
     const settings = {
-      dots: true,
+      dots: false,
       infinite: true,
       speed: 500,
       slidesToShow: 5,
-      slidesToScroll: 1
+      slidesToScroll: 5
     };
 
     return (
-      <Slider {...settings}>
-        {this.renderImages()}
-      </Slider>
+      <div className="slider__container">
+        <Slider ref={c => (this.slider = c)} {...settings}>
+          {this.renderImages()}
+        </Slider>
+        {this.renderNextPrevControls()}
+      </div>
     );
   }
 }

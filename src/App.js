@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import About from './pages/about';
-import { searchGiphyByTerm } from './actions';
+import { searchGiphyByTerm, setSearchTerm } from './actions';
 import Nav from "./components/nav";
 import Carousel from './components/carousel';
 import "slick-carousel/slick/slick.css";
@@ -30,6 +30,7 @@ class App extends Component {
     const {
       searchGiphyByTerm,
       searchTerm,
+      setSearchTerm,
     } = this.props;
 
     return (
@@ -37,6 +38,7 @@ class App extends Component {
         <Nav />
         <Search
           searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
           handleSearch={searchGiphyByTerm}
         />
         <hr/>
@@ -61,7 +63,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     searchGiphyByTerm: (searchTerm) => dispatch(searchGiphyByTerm(searchTerm)),
-
+    setSearchTerm: searchTerm => dispatch(setSearchTerm(searchTerm)),
   }
 };
 
