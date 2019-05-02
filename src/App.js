@@ -9,14 +9,6 @@ import "slick-carousel/slick/slick-theme.css";
 import Search from "./components/search";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      value: '',
-    }
-  }
-
   showAboutPage() {
     return <About />
   }
@@ -37,9 +29,9 @@ class App extends Component {
       <div className="AppContainer">
         <Nav />
         <Search
+          handleSearch={searchGiphyByTerm}
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
-          handleSearch={searchGiphyByTerm}
         />
         <hr/>
         <Carousel images={images} />

@@ -7,6 +7,7 @@ export const setSearchTerm = searchTerm => ({
   type: SET_SEARCH_TERM,
   searchTerm,
 });
+
 const fetchImages = (searchTerm) => {
   const url = `${GIPHY_API_ENDPOINT}&q=${searchTerm}`;
 

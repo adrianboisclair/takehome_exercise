@@ -1,6 +1,12 @@
 import React from "react";
 import Slider from "react-slick";
 import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 class SimpleSlider extends React.Component {
   constructor(props) {
@@ -20,7 +26,18 @@ class SimpleSlider extends React.Component {
   renderImages() {
     return this.props.images.map(child =>
       <Card>
-        <img src={child.replace(/^http:\/\//i, 'https://')} key={Math.random()}/>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            image={child.replace(/^http:\/\//i, 'https://')}
+            title="Image"
+          />
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary">
+            Share
+          </Button>
+        </CardActions>
       </Card>
     );
   }
@@ -43,8 +60,8 @@ class SimpleSlider extends React.Component {
       dots: false,
       infinite: true,
       speed: 500,
-      slidesToShow: 5,
-      slidesToScroll: 5
+      slidesToShow: 1,
+      slidesToScroll: 1
     };
 
     return (
