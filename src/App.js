@@ -7,10 +7,12 @@ import Carousel from './components/carousel';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Search from "./components/search";
+import { DEFAULT_SEARCH_TERM } from './constants';
 
 class App extends Component {
-  showAboutPage() {
-    return <About />
+  componentWillMount() {
+    this.props.setSearchTerm(DEFAULT_SEARCH_TERM);
+    this.props.searchGiphyByTerm(DEFAULT_SEARCH_TERM);
   }
 
   getImages() {
@@ -54,7 +56,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    searchGiphyByTerm: (searchTerm) => dispatch(searchGiphyByTerm(searchTerm)),
+    searchGiphyByTerm: searchTerm => dispatch(searchGiphyByTerm(searchTerm)),
     setSearchTerm: searchTerm => dispatch(setSearchTerm(searchTerm)),
   }
 };
