@@ -6,8 +6,7 @@ import Nav from "./components/nav";
 import Carousel from './components/carousel';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import Search from "./components/search";
 
 class App extends Component {
   constructor(props) {
@@ -22,33 +21,26 @@ class App extends Component {
     return <About />
   }
 
+  getImages() {
+    return this.props.result.map(item => item.images.downsized.url);
+  }
+
   render() {
-    const images = this.props.result.map((item) => {
-      return item.images.downsized.url;
-    });
+    const images = this.getImages();
+    const {
+      searchGiphyByTerm,
+      searchTerm,
+    } = this.props;
+
     return (
-      <div>
+      <div className="AppContainer">
         <Nav />
-        <div className="searchContainer">
-          <TextField
-            id="standard-uncontrolled"
-            label="Search for an Image"
-            defaultValue=""
-            margin="normal"
-          />
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => this.props.searchGiphyByTerm(this.props.searchTerm)}
-            style={{ marginTop: '16px', marginBottom: '8px'}}
-          >
-            Search Giphy
-          </Button>
-        </div>
+        <Search
+          searchTerm={searchTerm}
+          handleSearch={searchGiphyByTerm}
+        />
         <hr/>
-        <Carousel>
-          {images}
-        </Carousel>
+        <Carousel images={images} />
       </div>
     )
   }

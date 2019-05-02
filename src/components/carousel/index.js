@@ -7,8 +7,8 @@ class SimpleSlider extends React.Component {
     super(props);
   }
 
-  renderChildren() {
-    return this.props.children.map(child =>
+  renderImages() {
+    return this.props.images.map(child =>
       <Card>
         <img src={child.replace(/^http:\/\//i, 'https://')} key={Math.random()}/>
       </Card>
@@ -26,7 +26,7 @@ class SimpleSlider extends React.Component {
 
     return (
       <Slider {...settings}>
-        {this.renderChildren()}
+        {this.renderImages()}
       </Slider>
     );
   }
