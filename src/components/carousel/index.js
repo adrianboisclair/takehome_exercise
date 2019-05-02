@@ -44,13 +44,13 @@ class SimpleSlider extends React.Component {
 
   renderNextPrevControls() {
     return (
-      <div style={{ textAlign: "center" }}>
-        <button className="button" onClick={this.previous}>
+      <div style={{ display: 'flex', background: 'white', textAlign: "center", width: "100%", position: 'fixed', bottom: '0', left: '0', right: '0'}}>
+        <Button variant="contained" className="button" onClick={this.previous} style={{flex: '1'}}>
           Previous
-        </button>
-        <button className="button" onClick={this.next}>
+        </Button>
+        <Button fullWidth variant="contained" className="button" onClick={this.next} style={{flex: '1'}}>
           Next
-        </button>
+        </Button>
       </div>
     );
   }
