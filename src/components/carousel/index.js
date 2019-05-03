@@ -8,6 +8,23 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+const styles = {
+  button: {
+    flex: '1',
+    margin: '5px'
+  },
+  buttonContainer: {
+    background: 'white',
+    bottom: '0',
+    display: 'flex',
+    left: '0',
+    position: 'fixed',
+    right: '0',
+    textAlign: "center",
+    width: "100%",
+  }
+};
+
 class SimpleSlider extends React.Component {
   constructor(props) {
     super(props);
@@ -24,31 +41,48 @@ class SimpleSlider extends React.Component {
   }
 
   renderImages() {
-    return this.props.images.map(child =>
-      <Card>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            image={child.replace(/^http:\/\//i, 'https://')}
-            title="Image"
-          />
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-        </CardActions>
-      </Card>
+    return this.props.images.map(child => {
+      const image = child.replace(/^http:\/\//i, 'https://');
+
+      return (
+        <Card>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              image={image}
+              title="Image"
+            />
+          </CardActionArea>
+          <CardActions>
+            <Button size="small" color="primary">
+              Share
+            </Button>
+          </CardActions>
+        </Card>
+      );
+    }
+
     );
   }
 
   renderNextPrevControls() {
     return (
-      <div style={{ display: 'flex', background: 'white', textAlign: "center", width: "100%", position: 'fixed', bottom: '0', left: '0', right: '0'}}>
-        <Button variant="contained" className="button" onClick={this.previous} style={{flex: '1'}}>
+      <div style={styles.buttonContainer}>
+        <Button
+          variant="contained"
+          className="button"
+          onClick={this.previous}
+          style={styles.button}
+        >
           Previous
         </Button>
-        <Button fullWidth variant="contained" className="button" onClick={this.next} style={{flex: '1'}}>
+        <Button
+          fullWidth
+          variant="contained"
+          className="button"
+          onClick={this.next}
+          style={styles.button}
+        >
           Next
         </Button>
       </div>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import About from './pages/about';
 import { searchGiphyByTerm, setSearchTerm } from './actions';
 import Nav from "./components/nav";
 import Carousel from './components/carousel';
