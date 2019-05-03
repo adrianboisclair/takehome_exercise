@@ -1,7 +1,8 @@
 import {
   SEARCH_GIPHY_BY_TERM,
   SEARCH_GIPHY_BY_TERM_COMPLETE,
-  SET_SEARCH_TERM
+  SET_IS_LOADING_STATUS,
+  SET_SEARCH_TERM,
 } from "../actionTypes";
 
 export default (state = {result: []}, action) => {
@@ -23,6 +24,12 @@ export default (state = {result: []}, action) => {
       return {
         ...state,
         result: action.payload.data,
+      };
+
+    case SET_IS_LOADING_STATUS:
+      return {
+        ...state,
+        isLoading: action.payload,
       };
 
     default:

@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { searchGiphyByTerm, setSearchTerm } from './actions';
+import {searchGiphyByTerm, setIsLoadingStatus, setSearchTerm} from './actions';
 import Nav from "./components/nav";
+import Progress from "./components/progress";
 import Carousel from './components/carousel';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Search from "./components/search";
-import { DEFAULT_SEARCH_TERM } from './constants';
+import {DEFAULT_SEARCH_TERM, IS_LOADING_FALSE} from './constants';
 
 class App extends Component {
   componentWillMount() {
@@ -34,6 +35,9 @@ class App extends Component {
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
         />
+        <Progress
+          isLoading={this.props.isLoading}
+        />
         <hr/>
         <Carousel images={images} />
       </div>
@@ -43,11 +47,13 @@ class App extends Component {
 
 const mapStateToProps = state => {
   const {
+    isLoading,
     result,
     searchTerm,
   } = state.home;
 
   return ({
+    isLoading,
     result,
     searchTerm,
   });
@@ -57,6 +63,7 @@ const mapDispatchToProps = dispatch => {
   return {
     searchGiphyByTerm: searchTerm => dispatch(searchGiphyByTerm(searchTerm)),
     setSearchTerm: searchTerm => dispatch(setSearchTerm(searchTerm)),
+    setIsLoadingStatus: (loadingStatus) => dispatch(setIsLoadingStatus(loadingStatus))
   }
 };
 
