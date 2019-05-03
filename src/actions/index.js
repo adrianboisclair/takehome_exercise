@@ -19,10 +19,3 @@ export const searchGiphyByTerm = searchTerm => {
       });
   }
 };
-
-export const setIsLoadingStatus = (isLoading) => {
-  return {
-    type: SET_IS_LOADING_STATUS,
-    payload: isLoading
-  }
-};

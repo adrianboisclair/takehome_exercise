@@ -1,42 +1,3 @@
-// import Toolbar from "@material-ui/core/Toolbar/Toolbar";
-// import Typography from "@material-ui/core/Typography/Typography";
-// import IconButton from "@material-ui/core/IconButton/IconButton";
-// import AppBar from "@material-ui/core/AppBar/AppBar";
-// import React from "react";
-//
-// const styles = {
-//   root: {
-//     flexGrow: 1,
-//   },
-//   grow: {
-//     flexGrow: 1,
-//   },
-//   menuButton: {
-//     marginLeft: -12,
-//     marginRight: 20,
-//   },
-// };
-//
-// class Nav extends React.Component {
-//   render(props) {
-//     const { classes } = props;
-//
-//     return (
-//       <AppBar position="static" color="default">
-//         <Toolbar>
-//           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-//           </IconButton>
-//           <Typography variant="h6" color="inherit">
-//             Giphy Image Search
-//           </Typography>
-//         </Toolbar>
-//       </AppBar>
-//     );
-//   }
-// }
-//
-// export default Nav;
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
@@ -48,7 +9,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import Search from "../search";
+import {Link} from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -110,6 +71,7 @@ const styles = theme => ({
   },
 });
 
+// TODO: Links should be styled, or icons. 
 function SearchAppBar(props) {
   const { classes } = props;
   return (
@@ -120,6 +82,14 @@ function SearchAppBar(props) {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" color="inherit" noWrap>Giphy Image Search</Typography>
+          <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+            <Link to={'/'}>
+              Home
+            </Link>
+            <Link to={'/about'}>
+              About
+            </Link>
+          </Typography>
 
           <div className={classes.grow} />
           <div className={classes.search}>

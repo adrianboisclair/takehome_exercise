@@ -5,6 +5,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import CardContent from '@material-ui/core/CardContent';
 
 const styles = {
   button: {
@@ -39,14 +41,13 @@ class SimpleSlider extends React.Component {
   }
 
   renderImages() {
-    return this.props.images.map((child, index) => {
+    const {
+      content,
+    } = this.props;
 
-      console.log({
-        child,
-        index,
-      });
-
-      const image = child.replace(/^http:\/\//i, 'https://');
+    return content.images.map((imgUrl, index) => {
+      const image = imgUrl.replace(/^http:\/\//i, 'https://');
+      const title = content.titles[index];
 
       return (
         <Card>
@@ -54,12 +55,18 @@ class SimpleSlider extends React.Component {
             <CardMedia
               component="img"
               image={image}
-              title="Image"
+              title={title}
             />
           </CardActionArea>
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">{title}</Typography>
+          </CardContent>
           <CardActions>
             <Button size="small" color="primary">
               Share
+            </Button>
+            <Button size="small" color="primary">
+              Learn More
             </Button>
           </CardActions>
         </Card>

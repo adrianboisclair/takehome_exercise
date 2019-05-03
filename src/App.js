@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {searchGiphyByTerm, setIsLoadingStatus, setSearchTerm} from './actions';
+import {searchGiphyByTerm, setSearchTerm} from './actions';
 import Nav from "./components/nav";
 import Progress from "./components/progress";
 import Carousel from './components/carousel';
@@ -15,10 +15,8 @@ class App extends Component {
     this.props.searchGiphyByTerm(DEFAULT_SEARCH_TERM);
   }
 
-  getPropsFromImages() {
-    return {
-      titles: this.props.result.map(item => item.title),
-    }
+  getImageTitles() {
+    return this.props.result.map(item => item.title)
   }
 
   getImages() {
@@ -28,6 +26,7 @@ class App extends Component {
 
   render() {
     const images = this.getImages();
+    const titles = this.getImageTitles();
     const {
       isLoading,
       routes,
@@ -54,7 +53,12 @@ class App extends Component {
           isLoading={isLoading}
         />
         <hr/>
-        <Carousel images={images} props={this.getPropsFromImages()} />
+        <Carousel
+          content={{
+            images,
+            titles,
+          }}
+        />
       </div>
     )
   }
@@ -76,11 +80,9 @@ const mapStateToProps = state => {
   });
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    searchGiphyByTerm: searchTerm => dispatch(searchGiphyByTerm(searchTerm)),
-    setSearchTerm: searchTerm => dispatch(setSearchTerm(searchTerm)),
-  }
-};
+const mapDispatchToProps = dispatch => ({
+  searchGiphyByTerm: searchTerm => dispatch(searchGiphyByTerm(searchTerm)),
+  setSearchTerm: searchTerm => dispatch(setSearchTerm(searchTerm)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
