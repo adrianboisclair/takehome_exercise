@@ -3,10 +3,8 @@ import Slider from "react-slick";
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 
 const styles = {
   button: {
@@ -41,7 +39,13 @@ class SimpleSlider extends React.Component {
   }
 
   renderImages() {
-    return this.props.images.map(child => {
+    return this.props.images.map((child, index) => {
+
+      console.log({
+        child,
+        index,
+      });
+
       const image = child.replace(/^http:\/\//i, 'https://');
 
       return (
@@ -91,11 +95,38 @@ class SimpleSlider extends React.Component {
 
   render() {
     const settings = {
-      dots: false,
+      dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: false
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
     };
 
     return (

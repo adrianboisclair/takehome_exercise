@@ -5,7 +5,15 @@ import {
   SET_SEARCH_TERM,
 } from "../actionTypes";
 
-export default (state = {result: []}, action) => {
+const DEFAULT_STATE = {
+  result: [],
+  routes: [
+    '/',
+    'about',
+  ]
+};
+
+export default (state = DEFAULT_STATE, action) => {
   switch (action.type) {
 
     case SET_SEARCH_TERM:

@@ -9,8 +9,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .searchContainer {
@@ -22,7 +21,24 @@ code {
 
 
 .slider__container {
-  max-height: 400px;
-  overflow: hidden;
   padding: 20px;
+}
+
+.MuiCardActionArea-root-178 {
+  height: 480px;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .MuiCardActionArea-root-178 {
+    height: 180px;
+    overflow: hidden;
+  }
+}
+
+.slick-slide { }
+
+.AppContainer {
+  margin: auto;
+  /*max-width: 800px;*/
 }
